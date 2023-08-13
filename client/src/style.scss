@@ -168,7 +168,7 @@ $lightGreen: #eec86f;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-
+            
             h1 {
               font-size: 48px;
             }
@@ -192,6 +192,28 @@ $lightGreen: #eec86f;
                 color: black;
               }
             }
+          }
+        }
+      }
+      .pagination {
+        margin-top: 80px;
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        margin-bottom: 20px;
+
+        button {
+          padding: 5px 10px;
+          border: none;
+          cursor: pointer;
+          background-color: white;
+          border: 1px solid teal;
+          color: teal;
+
+          &:hover {
+            border: 1px solid white;
+            background-color: $lightGreen;
+            color: black;
           }
         }
       }
