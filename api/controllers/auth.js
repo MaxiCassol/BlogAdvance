@@ -8,18 +8,20 @@ export const register = (req, res) => {
 
   db.query(q, [req.body.email, req.body.username], (err, data) => {
     if (err) return res.status(500).json(err);
-    if (data.length) return res.status(409).json("User already exists!");
+    if (data.length) return res.status(409).json({ error: "User already exists!" });
 
-    //Hash the password and create a user
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password, salt);
-
+    //CREATE USER   
     const q = "INSERT INTO users(`username`,`email`,`password`) VALUES (?)";
-    const values = [req.body.username, req.body.email, hash];
+    
+    const values = [
+      req.body.username, 
+      req.body.email,
+      req.body.password 
+    ];
 
     db.query(q, [values], (err, data) => {
       if (err) return res.status(500).json(err);
-      return res.status(200).json("User has been created.");
+      return res.status(200).json({ error: "User has been created." });
     });
   });
 };
@@ -32,18 +34,12 @@ export const login = (req, res) => {
   , (err, data) => {
     if (err) return res.status(500).json(err);
     if (data.length === 0) return res.status(404).json("User not found!");
-    console.log(user);
-    console.log("--------------------");
-    console.log(data[0].username); 
   
-
     // Check password
     const isPasswordCorrect = bcrypt.compareSync(
       req.body.password,
       data[0].password
     );
-    console.log("--------------------");
-    console.log(req.body.password, data[0].password);
 
     if (isPasswordCorrect)
       return res.status(400).json("Wrong username or password!");
