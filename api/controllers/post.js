@@ -1,7 +1,7 @@
 import { db } from "../db.js";
 import jwt from "jsonwebtoken";
 
-export const getPosts = (req, res) => {
+export const getPosts = (req, res) => {  // all posts for home
   const q = req.query.cat
     ? "SELECT * FROM posts WHERE cat=?"
     : "SELECT * FROM posts";
@@ -13,7 +13,7 @@ export const getPosts = (req, res) => {
   });
 };
 
-export const getPost = (req, res) => {
+export const getPost = (req, res) => { //detail page
   const q =
     "SELECT p.id, `username`, `title`, `desc`, p.img, u.img AS userImg, `cat`,`date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = ? ";
 
@@ -24,7 +24,7 @@ export const getPost = (req, res) => {
   });
 };
 
-export const addPost = (req, res) => {
+export const addPost = (req, res) => {  // write new post
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 

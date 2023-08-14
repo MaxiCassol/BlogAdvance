@@ -5,11 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 
 const Login = () => {
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = useState({  // data uasers from inputs
     username: "",
     password: "",
   });  
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]); // data users from db
   const [err, setError] = useState(null);
 
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ const Login = () => {
     const fetchData = async () => {
       try {
         const res2 = await axios.get("/users");
+        // console.log(res2.data);
         setUsers(res2.data);
       } catch (err) {
         console.log(err);
@@ -28,18 +29,20 @@ const Login = () => {
 
   const { login } = useContext(AuthContext);
 
-
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const userMatch = users.find(user => user.username === inputs.username && user.password === inputs.password);
-
+    e.preventDefault();                 
+    //Compare users to find same username and password
+    const userMatch = users.find(user =>  
+      user.username === inputs.username && 
+      user.password === inputs.password);
+    
     try {
       login(userMatch)
-      if (!userMatch) navigate("/");
+      if (userMatch) navigate("/");
     } catch (err) {
       setError(err.response.data);
     }

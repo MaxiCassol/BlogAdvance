@@ -1,4 +1,4 @@
-$lightGreen: #eec86f;
+$lightGreen: #eb9c4d;
 
 .app {
   display: flex;
@@ -22,7 +22,7 @@ $lightGreen: #eec86f;
 
       h1 {
         font-size: 20px;
-        color: #eec86f;
+        color: #eb9c4d;
         margin-bottom: 20px;
       }
 
@@ -43,7 +43,7 @@ $lightGreen: #eec86f;
         button {
           padding: 10px;
           border: none;
-          background-color: #eec86f;
+          background-color: #eb9c4d;
           cursor: pointer;
           color: white;
         }
@@ -102,7 +102,7 @@ $lightGreen: #eec86f;
             &:hover {
               color: teal;
               background-color: white;
-              border: 1px solid #eec86f;
+              border: 1px solid #eb9c4d;
             }
           }
         }
@@ -112,7 +112,7 @@ $lightGreen: #eec86f;
     //FOOTER
 
     footer {
-      margin-top: 100px;
+      margin-top: 50px;
       padding: 20px;
       background-color: $lightGreen;
       display: flex;

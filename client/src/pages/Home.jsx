@@ -3,11 +3,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import Single from "./Single";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1); // Página actual
-  const postsPerPage = 5;
+  const postsPerPage = 5; // Cantidad por pagina
 
   const cat = useLocation().search
 
@@ -15,7 +16,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(`/posts${cat}`)
-        setPosts(res.data);
+        setPosts(res.data.reverse());
       } catch (err) {
         console.log(err);
       }
@@ -36,10 +37,10 @@ const Home = () => {
     return doc.body.textContent
   }
 
-
-  return (
-    <div className="home">
-      <div className="posts">
+  return (    
+    <div className="home">  
+        <hr />
+      <div className="posts">        
         {currentPosts.map((post) => (
           <div className="post" key={post.id}>
             <div className="img">
@@ -48,11 +49,13 @@ const Home = () => {
               : <img src={`../upload/${post.img}`} alt="pic" />}
             </div>
             <div className="content">
-              <Link className="link" to={`/posts/${post.id}`}>
+              <Link className="link" to={`/post/${post.id}`}>
                 <h1>{post.title}</h1>
               </Link>
               <p>{getText(post.desc)}</p>
-              {/* <button>Read More</button> */}
+              <Link to={`/post/${post.id}`}>              
+              <button >Read More</button>
+              </Link>
             </div>            
           </div>
         ))}

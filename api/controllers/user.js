@@ -1,6 +1,6 @@
 import { db } from "../db.js";
 
-export const getUsers = (req, res) => {
+export const getUsers = (req, res) => { // trae todos los usuarios
   const q = req.query.user 
   ? "SELECT * FROM posts WHERE nada=?"
   : "SELECT * FROM blog.users";
