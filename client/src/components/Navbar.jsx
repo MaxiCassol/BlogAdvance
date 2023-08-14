@@ -41,11 +41,22 @@ const Navbar = () => {
               Login
             </Link>
           )}
+          {currentUser 
+          ? (
           <span className="write">
             <Link className="link" to="/write">
               Write
             </Link>
           </span>
+          )
+        : (
+          <span className="write">
+            <Link className="link" to="/login">
+              Write
+            </Link>
+          </span>
+          )
+        }          
         </div>
       </div>
     </div>

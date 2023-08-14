@@ -6,8 +6,8 @@ import axios from "axios";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1); // Página actual
-  const postsPerPage = 5; // Cantidad por pagina
+  const [currentPage, setCurrentPage] = useState(1); // current page
+  const postsPerPage = 5; // quantity per page
 
   const cat = useLocation().search
 
