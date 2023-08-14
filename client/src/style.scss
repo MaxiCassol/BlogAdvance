@@ -90,6 +90,7 @@ $lightGreen: #eb9c4d;
 
           .name{
             color: rgb(233, 189, 96);
+            font-weight: bold; 
           }
           
           .log {
@@ -104,6 +105,7 @@ $lightGreen: #eb9c4d;
             justify-content: center;
             font-weight: 300;
             border: 1px solid white;
+            text-decoration: none;
 
             &:hover {
               color: teal;

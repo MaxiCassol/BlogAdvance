@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
-import Single from "./Single";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
