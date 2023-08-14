@@ -49,6 +49,7 @@ const Single = (p) => {
   return (
     <div className="single">
       <div className="content">
+      <hr/>
           {post.img
               ? <img src={post.img} alt="img" />
               : <img src={`../upload/${post.img}`} alt="pic" />}
@@ -61,7 +62,6 @@ const Single = (p) => {
             <span>{post.username}</span>
             <p>Posted {moment(post.date).fromNow()}</p>
           </div>
-          {console.log(currentUser)}
           {currentUser && currentUser.username === post.username && (
             <div className="edit">
               <Link to={`/write?edit=2`} state={post}>
