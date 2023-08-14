@@ -9,6 +9,7 @@ const Write = () => {
   const state = useLocation().state;
   const [value, setValue] = useState(state?.title || "");
   const [title, setTitle] = useState(state?.desc || "");
+  const [img, setImg] = useState(state?.desc || "");
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState(state?.cat || "");
 
@@ -35,13 +36,13 @@ const Write = () => {
             title,
             desc: value,
             cat,
-            img: file ? imgUrl : "",
+            img: img,
           })
         : await axios.post(`/posts/`, {
             title,
             desc: value,
             cat,
-            img: file ? imgUrl : "",
+            img: img,
             date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
           });
           navigate("/")
@@ -68,30 +69,7 @@ const Write = () => {
         </div>
       </div>
       <div className="menu">
-        <div className="item">
-          <h1>Publish</h1>
-          <span>
-            <b>Status: </b> Draft
-          </span>
-          <span>
-            <b>Visibility: </b> Public
-          </span>
-          <input
-            style={{ display: "none" }}
-            type="file"
-            id="file"
-            name=""
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-          <label className="file" htmlFor="file">
-            Upload Image
-          </label>
-          <div className="buttons">
-            <button>Save as a draft</button>
-            <button onClick={handleClick}>Publish</button>
-          </div>
-        </div>
-        <div className="item">
+      <div className="item">
           <h1>Category</h1>
           <div className="cat">
             <input
@@ -160,6 +138,32 @@ const Write = () => {
             <label htmlFor="food">Food</label>
           </div>
         </div>
+        <div className="item">
+          <h1>Publish</h1>          
+          <span>
+            <b>Visibility: </b> Public
+          </span>
+          {/* <input
+            style={{ display: "none" }}
+            type="file"
+            id="file"
+            name=""
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+          <label className="file" htmlFor="file">
+            Upload Image
+          </label> */}
+          <div>        
+          <input
+          type="text"
+          placeholder="Image Url"
+          onChange={(e) => setImg(e.target.value)}/>
+          </div>
+          
+          <div className="buttons">
+            <button onClick={handleClick}>Publish</button>
+          </div>
+        </div>        
       </div>
     </div>
   );
