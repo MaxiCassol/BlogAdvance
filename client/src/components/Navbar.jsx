@@ -5,6 +5,8 @@ import Logo from "../img/logo.png";
 
 const Navbar = () => {
   const { currentUser, logout } = useContext(AuthContext);
+  
+  //Also could add a serach bar
 
   return (
     <div className="navbar">

@@ -46,7 +46,7 @@ export const login = (req, res) => {
 
     const token = jwt.sign({ id: data[0].id }, "jwtkey");
     const { password, ...other } = data[0];
-
+      // Also could validate length or format with regex that include capital letter and more
     res
       .cookie("access_token", token, {
         httpOnly: true,

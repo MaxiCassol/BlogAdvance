@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 
 const Login = () => {
+  // It's posible to check inputs an make errors state to show if user is to short or mail ends with ".com"
+  
   const [inputs, setInputs] = useState({  // data uasers from inputs
     username: "",
     password: "",

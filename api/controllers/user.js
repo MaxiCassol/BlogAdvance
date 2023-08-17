@@ -23,7 +23,7 @@ export const addUser = (req, res) => {
       req.body.password,
       req.body.img,
     ];
-
+    //Also could check if user is already in db 
     db.query(q, values, (err, data) => {
       if (err) return res.status(500).json(err);
       return res.json("User has been created.");

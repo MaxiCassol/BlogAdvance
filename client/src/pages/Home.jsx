@@ -4,8 +4,11 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
+//Anybody can access the blog and read, but only register users can write on it. 
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  //pagination
   const [currentPage, setCurrentPage] = useState(1); // current page
   const postsPerPage = 5; // quantity per page
 
@@ -22,7 +25,8 @@ const Home = () => {
     };
     fetchData();
   }, [cat]);
-
+  
+  //pagination
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);

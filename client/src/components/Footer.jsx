@@ -2,6 +2,8 @@ import React from "react";
 import Logo from "../img/logo.png";
 
 const Footer = () => {
+  // footer used instead an about tag
+  
   return (
     <footer>
       <a href="#top" class="back-to-top" title="Back to Top">

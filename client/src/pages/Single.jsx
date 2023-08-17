@@ -10,8 +10,9 @@ import { AuthContext } from "../context/authContext";
 import DOMPurify from "dompurify";
 
 const Single = (p) => {
-  const [post, setPost] = useState({});
+  //Other nice feature to implement are comments or favorites posts. Got other projects with that. 
   
+  const [post, setPost] = useState({});
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -39,11 +40,6 @@ const Single = (p) => {
     } catch (err) {
       console.log(err);
     }
-  }
-
-  const getText = (html) =>{
-    const doc = new DOMParser().parseFromString(html, "text/html")
-    return doc.body.textContent
   }
 
   return (

@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
+  //here can be check inputs, use regex or just simple validations
+  
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
